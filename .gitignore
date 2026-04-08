@@ -21,3 +21,6 @@ tests/
 
 # Nanostack artifacts (project-local)
 .nanostack/
+
+# Nanostack knowledge base (internal docs, specs, decisions — not for public repo)
+Nanostack/
