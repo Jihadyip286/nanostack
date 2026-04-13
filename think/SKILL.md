@@ -64,6 +64,14 @@ ls -t .nanostack/know-how/journal/*.md 2>/dev/null | head -1
 
 If no sprint data exists (no artifacts, no journal, no sessions), tell the user: "No sprint data found. Run a sprint first, then come back with `/think --retro`." Stop here.
 
+**1b. Gather git metrics:**
+
+```bash
+~/.claude/skills/nanostack/bin/sprint-metrics.sh
+```
+
+The output is JSON with `git` (commits, lines added/removed, files changed) and `cycle_time` (total seconds, slowest phase, per-phase durations). Use these numbers in your diagnostic. Lines changed gives scale. Phase durations reveal bottlenecks. Commit frequency shows velocity.
+
 **2. Retro diagnostic — four questions:**
 
 Apply the same rigor as the forward-looking diagnostic, but to what was shipped:
@@ -71,7 +79,7 @@ Apply the same rigor as the forward-looking diagnostic, but to what was shipped:
 | # | Question | What to read |
 |---|----------|-------------|
 | 1 | **Did we solve the right problem?** Re-read the think artifact's value proposition. Does the shipped code actually address it, or did scope drift change the product? | Think artifact + ship artifact |
-| 2 | **What surprised us?** Which review/security/qa findings were unexpected? Which risks from the plan materialized and which didn't? | Review + security + qa artifacts, pattern-report risk accuracy |
+| 2 | **What surprised us?** Which review/security/qa findings were unexpected? Which risks materialized? Did cycle time or lines changed deviate from what the plan estimated? | Review + security + qa artifacts, pattern-report risk accuracy, git metrics |
 | 3 | **What's recurring?** Are the same findings showing up across sprints? If pattern-report shows a tag appearing 3+ times, that's a systemic issue, not a one-off. | pattern-report.sh recurring findings |
 | 4 | **What should the next sprint be?** Based on what was shipped, what was deferred, and what broke — what's the highest-value next thing? | Out-of-scope from plan, unresolved findings, deferred risks |
 
@@ -82,6 +90,8 @@ Apply the same rigor as the forward-looking diagnostic, but to what was shipped:
 
 **Sprint:** <session ID or date>
 **Shipped:** <what was built, one sentence>
+**Scale:** <N commits, N lines changed, N files touched>
+**Cycle time:** <total duration, slowest phase and why>
 
 **Right problem?** <yes/no — and why>
 **Surprises:** <unexpected findings or outcomes>
@@ -102,6 +112,28 @@ Write to `.nanostack/know-how/briefs/YYYY-MM-DD-retro.md` with the retro output 
 **End of retro mode.** The sections below are for the normal forward-looking /think process.
 
 ---
+
+## Journey Context
+
+Before starting the diagnostic, check if the user has prior sprint history in this project:
+
+```bash
+ls -t .nanostack/know-how/briefs/*.md 2>/dev/null | head -3
+```
+
+If briefs exist, read the last 3 (most recent first). Also check for a retro brief:
+
+```bash
+ls -t .nanostack/know-how/briefs/*retro*.md 2>/dev/null | head -1
+```
+
+If prior briefs exist, open with context before asking the user what they want to build:
+
+> Last sprints: <title from brief 1> (<date>), <title from brief 2> (<date>). <If retro exists: The retro recommended: <recommendation from retro brief>.> What are we working on next?
+
+If no briefs exist, skip this step — the user is new to the project.
+
+This turns /think from a stateless tool into a partner that remembers. The user doesn't have to re-explain context from prior sprints.
 
 ## Session
 
